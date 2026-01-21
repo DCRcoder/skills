@@ -16,6 +16,31 @@ According to the [Claude Code official documentation](https://code.claude.com/do
 
 ## 📦 Available Skills
 
+### ffmpeg-media-processor
+
+**FFmpeg Multimedia Processing Expert** - Professional tool for audio/video conversion, editing, analysis, and optimization using FFmpeg.
+
+**Features:**
+- ✅ Video/audio format conversion (MP4, WebM, MP3, AAC, etc.)
+- ✅ Video editing (trimming, merging, resolution/frame rate adjustment)
+- ✅ Filters and effects (watermark, subtitles, stabilization, picture-in-picture)
+- ✅ Streaming (HLS/DASH, RTMP/RTSP streaming)
+- ✅ Media analysis (ffprobe info extraction, thumbnail generation)
+- ✅ Quality optimization (H.264/H.265/VP9/AV1 encoding)
+- ✅ Hardware acceleration and batch processing support
+
+**Use Cases:**
+- Convert video/audio formats
+- Compress video files
+- Extract audio or subtitles
+- Add watermarks and filter effects
+- Generate live streams
+- Analyze media file properties
+
+**Documentation:**
+- [中文说明](./ffmpeg-media-processor/SKILL_CN.md)
+- [English Documentation](./ffmpeg-media-processor/SKILL.md)
+
 ### generate-openapi-docs
 
 **OpenAPI 3.0 Documentation Generation Expert** - Analyzes backend code and generates structurally rigorous OpenAPI 3.0 YAML documentation.
@@ -44,10 +69,12 @@ According to the [Claude Code official documentation](https://code.claude.com/do
 Copy Skills to your personal Skills directory:
 
 ```bash
-# Copy entire skills collection
+# Copy all skills
+cp -r ./ffmpeg-media-processor ~/.claude/skills/
 cp -r ./generate-openapi-docs ~/.claude/skills/
 
 # Or copy specific skill only
+cp -r ./ffmpeg-media-processor ~/.claude/skills/ffmpeg-media-processor
 cp -r ./generate-openapi-docs ~/.claude/skills/generate-openapi-docs
 ```
 
@@ -58,11 +85,12 @@ Create `.claude/skills` directory in your project and copy Skills:
 ```bash
 # In project root
 mkdir -p .claude/skills
+cp -r ./ffmpeg-media-processor .claude/skills/
 cp -r ./generate-openapi-docs .claude/skills/
 
 # Commit to version control
 git add .claude/skills
-git commit -m "Add generate-openapi-docs skill"
+git commit -m "Add FFmpeg and OpenAPI skills"
 ```
 
 ### Verify Installation
@@ -73,9 +101,23 @@ Start Claude Code and ask:
 What Skills are available?
 ```
 
-You should see `generate-openapi-docs` appear in the list.
+You should see `ffmpeg-media-processor` and `generate-openapi-docs` appear in the list.
 
 ## 💡 Usage Examples
+
+### Process Videos with FFmpeg
+
+```
+Please help me convert input.mp4 to WebM format and compress it to a reasonable size
+```
+
+Or:
+
+```
+Extract audio from video.mp4 and save as MP3 format
+```
+
+Claude will automatically recognize your request and apply the `ffmpeg-media-processor` Skill to generate optimized FFmpeg commands.
 
 ### Generate OpenAPI Documentation
 

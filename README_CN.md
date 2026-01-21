@@ -14,6 +14,31 @@ Skills 是教 Claude 如何执行特定任务的 Markdown 文件。它们是**�
 
 ## 📦 可用的 Skills
 
+### ffmpeg-media-processor
+
+**FFmpeg 多媒体处理专家** - 使用 FFmpeg 进行音视频转换、编辑、分析和优化的专业工具。
+
+**特性：**
+- ✅ 视频/音频格式转换（MP4, WebM, MP3, AAC 等）
+- ✅ 视频编辑（剪辑、合并、调整分辨率、帧率）
+- ✅ 滤镜和效果（水印、字幕、稳定化、画中画）
+- ✅ 流媒体处理（HLS/DASH, RTMP/RTSP 推流）
+- ✅ 媒体分析（ffprobe 信息获取、缩略图生成）
+- ✅ 质量优化（H.264/H.265/VP9/AV1 编码）
+- ✅ 硬件加速和批量处理支持
+
+**使用场景：**
+- 转换视频/音频格式
+- 压缩视频文件
+- 提取音频或字幕
+- 添加水印和滤镜效果
+- 生成直播流
+- 分析媒体文件属性
+
+**文档：**
+- [中文说明](./ffmpeg-media-processor/SKILL_CN.md)
+- [English Documentation](./ffmpeg-media-processor/SKILL.md)
+
 ### generate-openapi-docs
 
 **OpenAPI 3.0 文档生成专家** - 分析后端代码并生成结构严谨、符合 OpenAPI 3.0 规范的 YAML 文档。
@@ -42,10 +67,12 @@ Skills 是教 Claude 如何执行特定任务的 Markdown 文件。它们是**�
 将 Skills 复制到你的个人 Skills 目录：
 
 ```bash
-# 复制整个 skills 集合
+# 复制所有 skills
+cp -r ./ffmpeg-media-processor ~/.claude/skills/
 cp -r ./generate-openapi-docs ~/.claude/skills/
 
 # 或者只复制特定的 skill
+cp -r ./ffmpeg-media-processor ~/.claude/skills/ffmpeg-media-processor
 cp -r ./generate-openapi-docs ~/.claude/skills/generate-openapi-docs
 ```
 
@@ -56,11 +83,12 @@ cp -r ./generate-openapi-docs ~/.claude/skills/generate-openapi-docs
 ```bash
 # 在项目根目录
 mkdir -p .claude/skills
+cp -r ./ffmpeg-media-processor .claude/skills/
 cp -r ./generate-openapi-docs .claude/skills/
 
 # 提交到版本控制
 git add .claude/skills
-git commit -m "Add generate-openapi-docs skill"
+git commit -m "Add FFmpeg and OpenAPI skills"
 ```
 
 ### 验证安装
@@ -71,9 +99,23 @@ git commit -m "Add generate-openapi-docs skill"
 What Skills are available?
 ```
 
-你应该会看到 `generate-openapi-docs` 出现在列表中。
+你应该会看到 `ffmpeg-media-processor` 和 `generate-openapi-docs` 出现在列表中。
 
 ## 💡 使用示例
+
+### 使用 FFmpeg 处理视频
+
+```
+请帮我将 input.mp4 转换为 WebM 格式，并压缩到合理的大小
+```
+
+或者：
+
+```
+提取 video.mp4 中的音频，保存为 MP3 格式
+```
+
+Claude 会自动识别你的请求并应用 `ffmpeg-media-processor` Skill，生成优化的 FFmpeg 命令。
 
 ### 生成 OpenAPI 文档
 
